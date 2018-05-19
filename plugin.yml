@@ -1,0 +1,38 @@
+name: StaffMode
+version: 1.0.1
+api: [3.0.0-ALPHA9, 2.1.0, 3.0.0-ALPHA10, 3.0.0-ALPHA11, 3.0.0-ALPHA12]
+author: georgianYT
+main: Mode\Main
+commands:
+ invisible:
+  description: Make you a ghost
+  permission: staffmode.invisible
+  default: op
+ visible:
+  description: Make you visible to players
+  permission: staffmode.visible
+  default: op
+ vmban:
+  description: Ban players
+  permission: staffmode.ban
+  default: op
+ vmpardon:
+  description: Pardon any which is banned
+  permission: staffmode.pardon
+  default: op
+ vminfo:
+  description: See any player information
+  permission: staffmode.info
+  default: op
+ vmfreeze:
+  description: Freeze and unFreeze any player
+  permission: staffmode.freeze
+  default: op
+ adminchat:
+  description: Chat just for op
+  permission: staffmode.adminchat
+  default: op
+ tools:
+  description: Check all commands
+  permission: staffmode.tools
+  default: op
