@@ -128,7 +128,7 @@ class Main extends PluginBase implements Listener{
 	public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args): bool{
 	switch($cmd){
 	case "invisible":
-	if($sender->hasPermission("voidminerpe.invisible")){
+	if($sender->hasPermission("staffmode.invisible")){
 		if($sender instanceof Player){
 			$cast = $this->c->get("Left-Message");
 			$cast = str_replace("{player}", $sender->getName(), $cast);
@@ -148,7 +148,7 @@ class Main extends PluginBase implements Listener{
 	break;
 	
 	case "visible":
-	if($sender->hasPermission("voidminerpe.visible")){
+	if($sender->hasPermission("staffmode.visible")){
 		if($sender instanceof Player){
 			$cast = $this->c->get("Join-Message");
 			$cast = str_replace("{player}", $sender->getName(), $cast);
@@ -168,7 +168,7 @@ class Main extends PluginBase implements Listener{
 	break;
 	
 	case "vmban":
-	if($sender->hasPermission("voidminerpe.ban")){
+	if($sender->hasPermission("staffmode.ban")){
 		if(isset($args[0])){
 			$p = array_shift($args);
 		$player = $sender->getServer()->getPlayer($p);
@@ -194,8 +194,8 @@ $config->save();
 		$this->getServer()->broadcastMessage("§d".$player->getName()." §bhas been banned, reason: §e".$reason);
 	    $player->kick("§7[§ax§7]§cYou have been banned§7[§ax§7] \n§6Banned by: §e{$sender->getName()}\n§6Reason: §e{$reason}\n§7If you think this ban is incorrect or\nyou have any question please contact us\nat §b@{$this->c->get("Twitter")} §7thanks for play!", false);
 		}else{$sender->sendMessage("§cNot player found...");}
-		//}else{$sender->sendMessage("§cuse: /vmban <player> <reason>");}
-		}else{$sender->sendMessage("§7Please use: §e/vmban <player> <reason>");}
+		//}else{$sender->sendMessage("§cuse: /staffban <player> <reason>");}
+		}else{$sender->sendMessage("§7Please use: §e/staffban <player> <reason>");}
 	}else{$sender->sendMessage("§cYou do not have permission to use this command.");}
 	return true;
 	break;
@@ -203,7 +203,7 @@ $config->save();
 	case "vmpardon":
 	case "vmunban":
 	case "vmub":
-	if($sender->hasPermission("voidminerpe.pardon")){
+	if($sender->hasPermission("staffmode.pardon")){
 		if(isset($args[0])){
 		$player = $args[0];
 		if(file_exists($this->getDataFolder().$player.".yml")){
@@ -224,7 +224,7 @@ $config->save();
 			@unlink($this->getDataFolder().$player.".yml");
 			$sender->sendMessage("§ePardon: §a".$player."\n§aCompleted!");
 			}else{$sender->sendMessage("§cThis player hasn't been banned by this plugin.");}
-			}else{$sender->sendMessage("§7Please use: §e/vmpardon <player>");}
+			}else{$sender->sendMessage("§7Please use: §e/staffpardon <player>");}
 		}else{$sender->sendMessage("§cYou dont have permission to use this command.");}
 		return true;
 		break;
