@@ -200,9 +200,9 @@ $config->save();
 	return true;
 	break;
 	
-	case "vmpardon":
-	case "vmunban":
-	case "vmub":
+	case "staffpardon":
+	case "staffunban":
+	case "staffub":
 	if($sender->hasPermission("staffmode.pardon")){
 		if(isset($args[0])){
 		$player = $args[0];
@@ -230,7 +230,7 @@ $config->save();
 		break;
 	
 	case "vminfo":
-	if($sender->hasPermission("voidminerpe.info")){
+	if($sender->hasPermission("staffmode.info")){
 		if(isset($args[0])){
 			$player = $sender->getServer()->getPlayer($args[0]);
 			if($player instanceof Player){
@@ -269,13 +269,13 @@ if($this->getServer()->getName() === "PocketMine-MP"){
 );
 		}
 				}else{$sender->sendMessage("§cCannot find player.");}
-			}else{$sender->sendMessage("§7Please use: §e/vminfo <player>");}
+			}else{$sender->sendMessage("§7Please use: §e/staffmodeinfo <player>");}
 		}else{$sender->sendMessage("§cYou dont have permission to use this command...");}
 		return true;
 		break;
 		
 	case "vmfreeze":
-	if($sender->hasPermission("voidminerpe.freeze")){
+	if($sender->hasPermission("staffmode.freeze")){
 		if(isset($args[0])){
 			$player = $sender->getServer()->getPlayer($args[0]);
 			if($player instanceof Player){
@@ -289,7 +289,7 @@ if($this->getServer()->getName() === "PocketMine-MP"){
 						unset($this->freeze[$player->getName()]);
 						}
 				}else{$sender->sendMessage("§cCannot find player.");}
-			}else{$sender->sendMessage("§7Please use: §e/vmfreeze [player]");}
+			}else{$sender->sendMessage("§7Please use: §e/staffmodefreeze [player]");}
 		}else{$sender->sendMessage("§cYou dont have permission to use this command.");}
 		return true;
 		break;
@@ -321,7 +321,7 @@ if($this->getServer()->getName() === "PocketMine-MP"){
 	
 	case "tools":
 	if($sender->isOp()){
-		$sender->sendMessage("§6Void§bMiner§cPE §dTools §eHelp§7[§21§6/§21]");
+		$sender->sendMessage("§6Staff§bMode§cPE §dTools §eHelp§7[§21§6/§21]");
 		$sender->sendMessage("§b/visible - §aMake you visible to other players!");
 		$sender->sendMessage("§b/invisible - §a[§aBe like a ghost!");
 		$sender->sendMessage("§b/vmban [player] [reason] - §aBan any player from this server!");
@@ -331,20 +331,20 @@ if($this->getServer()->getName() === "PocketMine-MP"){
 		$sender->sendMessage("§b/vminfo [player] §aCheck any player's information");
 		$sender->sendMessage("§b/tools - §aCheck all commands");
 		$sender->sendMessage("§b/bancheck <name> - §aCheck banned players information");
-		$sender->sendMessage("§eAuthor: §bYoTils123");
-		$sender->sendMessage("§dThis plugin is based from The Void Network.");
+		$sender->sendMessage("§eAuthor: §bgeorgianYT");
+		$sender->sendMessage("§dThis plugin is based from This Network.");
 		}else{$sender->sendMessage("§cYou dont have permission to use this command");}
 		return true;
 		break;
 	
 	case "bancheck":
-	if($sender->hasPermission("voidminerpe.bancheck")){
+	if($sender->hasPermission("staffmode.bancheck")){
 		if(isset($args[0])){
 		$banned = $args[0];
 		if(file_exists($this->getDataFolder().$banned.".yml")){
 			$config = new Config($this->getDataFolder().$banned.".yml", Config::YAML);
 			$datos = $config->get("Datos");
-			$sender->sendMessage("§6Void§bMiner§cPE §dBan Check");
+			$sender->sendMessage("§6Staff§bMode§cPE §dBan Check");
 			$sender->sendMessage("§5".$banned."'s §dban info");
 			$sender->sendMessage("§dAddress: §5".$datos[2]);
 			$sender->sendMessage("§dClient ID: §5".$datos[1]);
@@ -367,7 +367,7 @@ if($this->getServer()->getName() === "PocketMine-MP"){
     $event->setKickMessage("§cSorry §a".$player->getName()." §aYou are banned from this server\n§dName: §5".$datos[0]."\n§dReason: §5".$datos[3]);
     $event->setCancelled(true);
     }else{
-    $event->setKickMessage("§cSorry ".$player->getName()." §cYou are banned from the Void Network.");
+    $event->setKickMessage("§cSorry ".$player->getName()." §cYou are banned from this Network.");
     $event->setCancelled(true);
     }
     }
