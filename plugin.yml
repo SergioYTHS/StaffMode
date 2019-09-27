@@ -1,6 +1,6 @@
 name: StaffMode
 version: 1.0.1
-api: [3.0.0-ALPHA9, 2.1.0, 3.0.0-ALPHA10, 3.0.0-ALPHA11, 3.0.0-ALPHA12]
+api: [3.9.4]
 author: georgianYT
 main: Mode\Main
 commands:
